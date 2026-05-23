@@ -1,59 +1,120 @@
-# PortafolioPersonal
+# Proyecto Integrador - Portafolio Personal
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.7.
+Aplicación web tipo portafolio profesional multiusuario desarrollada con Angular, Firebase y Strapi.
 
-## Development server
+## Objetivo
 
-To start a local development server, run:
+Desarrollar una aplicación web que permita:
 
-```bash
-ng serve
+- Mostrar perfiles de programadores.
+- Mostrar proyectos destacados.
+- Administrar contenido dinámico mediante Strapi CMS.
+- Permitir autenticación de usuarios con Firebase.
+- Gestionar solicitudes de contacto hacia programadores.
+
+# Tecnologías utilizadas
+
+- Angular
+- TailwindCSS
+- TypeScript
+
+- Firebase Authentication
+- Cloud Firestore
+- Strapi CMS
+
+# Estructura del proyecto
+```txt
+src/app
+│   app.config.ts
+│   app.css
+│   app.html
+│   app.routes.ts
+│   app.spec.ts
+│   app.ts
+│   
+├───core
+│   ├───guards
+│   │       auth.guard.ts
+│   │       programmer.guard.ts
+│   │       
+│   ├───interceptors
+│   └───services
+│           auth.service.ts
+│           programmer.service.ts
+│           project.service.ts
+│           request.service.ts
+│           
+├───environments
+├───features
+│   ├───auth
+│   │   ├───login
+│   │   └───register
+│   ├───dashboard
+│   ├───home
+│   ├───programmers
+│   │   ├───programmer-list
+│   │   └───programmer-profile
+│   ├───projects
+│   └───requests
+│       ├───create-request
+│       └───my-requests
+├───interfaces
+│       programmer.interface.ts
+│       project.interface.ts
+│       request.interface.ts
+│       service.interface.ts
+│       
+├───layouts
+│   ├───auth-layout
+│   ├───dashboard-layout
+│   └───main-layout
+├───mocks
+│       mock-programmers.ts
+│       mock-projects.ts
+│       mock-services.ts
+│       
+└───shared
+    ├───components
+    │   ├───card-programmer
+    │   ├───card-project
+    │   ├───footer
+    │   ├───hero-section
+    │   └───navbar
+    ├───pipes
+    └───ui
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+--- 
+ 
+# Funcionalidades principales
 
-## Code scaffolding
+## Públicas
+- Home del portafolio
+- Visualización de programadores
+- Visualización de proyectos
+- Visualización de servicios
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Usuarios autenticados
+- Registro
+- Inicio de sesión
+- Crear solicitudes
+- Ver solicitudes realizadas
 
-```bash
-ng generate component component-name
-```
+## Programadores
+- Ver solicitudes recibidas
+- Responder solicitudes
+- Cambiar estado de solicitudes
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+# Autor(es)
 
-## Building
+- Sebastian Gomez
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+# Materia
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Programación y Plataformas Web
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Universidad Politécnica Salesiana
