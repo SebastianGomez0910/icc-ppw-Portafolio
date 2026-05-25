@@ -1,0 +1,61 @@
+<header class="bg-[#EFEFEF] shadow-sm relative z-50">
+    <nav class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+            
+            <div class="flex items-center md:hidden">
+                <button (click)="toggleMobileMenu()" class="text-[#7296A4] hover:text-[#9EBECB] focus:outline-none p-2">
+                    <svg class="w-7 h-7 stroke-current" fill="none" viewBox="0 0 24 24">
+                        @if (!isMobileMenuOpen) {
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                        } @else {
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                        }
+                    </svg>
+                </button>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[#7296A4]">
+                <a [routerLink]="['/']" (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Home</a>
+                <a [routerLink]="['/programadores']" (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Programadores</a>
+                <a [routerLink]="['/proyectos']" (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Proyectos</a>
+                <a [routerLink]="['/servicios']" (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Servicios</a>
+            </div>
+
+            <div class="hidden md:flex relative items-center">
+                <button 
+                    (click)="toggleMenu()"
+                    class="bg-[#7296A4] text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-[#9EBECB] transition-colors shadow-sm flex items-center gap-1 focus:outline-none">
+                    Ingresar
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+
+                <div 
+                    [class.hidden]="!isMenuOpen"
+                    class="absolute top-12 right-0 bg-white shadow-lg rounded-md w-40 py-2 border border-gray-100">
+                    <a [routerLink]="['/login']" (click)="closeMenus()" class="block px-4 py-2 text-sm text-[#7296A4] hover:bg-[#E6F0F2] transition-colors">Iniciar Sesión</a>
+                    <a [routerLink]="['/registro']" (click)="closeMenus()" class="block px-4 py-2 text-sm text-[#7296A4] hover:bg-[#E6F0F2] transition-colors">Registrarse</a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <div 
+        [class.hidden]="!isMobileMenuOpen" 
+        class="md:hidden bg-[#EFEFEF] border-t border-[#CDDEE5] absolute w-full shadow-md">
+        
+        <div class="px-4 pt-2 pb-4 space-y-1">
+            <a [routerLink]="['/']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Home</a>
+            <a [routerLink]="['/programadores']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Programadores</a>
+            <a [routerLink]="['/proyectos']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Proyectos</a>
+            <a [routerLink]="['/servicios']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Servicios</a>
+            
+            <div class="border-t border-[#CDDEE5] mt-4 pt-4">
+                <a [routerLink]="['/login']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-white bg-[#7296A4] hover:bg-[#9EBECB] mb-2 text-center">Iniciar Sesión</a>
+                <a [routerLink]="['/registro']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] border border-[#7296A4] hover:bg-[#E6F0F2] text-center">Registrarse</a>
+            </div>
+        </div>
+    </div>
+</header>
