@@ -1,0 +1,65 @@
+@if (proyecto(); as p) {
+    <section class="min-h-screen bg-[#EFEFEF] pt-24 pb-20 px-6 font-sans">
+        
+        <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-[#CDDEE5]">
+            
+            <div class="w-full h-64 md:h-96 relative bg-gray-200">
+                <img 
+                    [src]="p.mainImage ? 'http://localhost:1337' + p.mainImage.url : 'https://placehold.co/1200x600/9EBECB/ffffff?text=Proyecto'" 
+                    [alt]="p.name"
+                    class="w-full h-full object-cover"
+                >
+                <div class="absolute top-4 right-4 bg-[#7296A4] text-white px-4 py-2 rounded-full font-bold shadow-md">
+                    {{ p.projectType }}
+                </div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                
+                <h1 class="text-3xl md:text-5xl font-bold text-[#7296A4] mb-4">{{ p.name }}</h1>
+                <p class="text-lg text-gray-500 font-medium mb-8">{{ p.shortDescription }}</p>
+
+                <div class="flex flex-wrap gap-4 mb-10 border-b border-gray-100 pb-8">
+                    <div class="bg-[#F5F8F9] px-4 py-2 rounded-md border border-[#CDDEE5]">
+                        <span class="text-xs text-[#9EBECB] font-bold uppercase block mb-1">Tecnologías</span>
+                        <span class="text-gray-700 font-medium">{{ p.technologies }}</span>
+                    </div>
+
+                    @if (p.repositoryUrl) {
+                        <a [href]="p.repositoryUrl" target="_blank" class="flex items-center gap-2 bg-gray-800 text-white px-6 py-2 rounded-md hover:bg-gray-700 transition-colors">
+                            <span class="font-semibold">Ver Código</span>
+                        </a>
+                    }
+                    @if (p.demoUrl) {
+                        <a [href]="p.demoUrl" target="_blank" class="flex items-center gap-2 bg-[#7296A4] text-white px-6 py-2 rounded-md hover:bg-[#9EBECB] transition-colors">
+                            <span class="font-semibold">Visitar Demo</span>
+                        </a>
+                    }
+                </div>
+
+                <div class="prose max-w-none text-gray-700 leading-relaxed">
+                    @for (block of p.fullDescription; track $index) {
+                        <p class="mb-4">
+                            @for (child of block.children; track $index) {
+                                <span [class.font-bold]="child.bold" [class.italic]="child.italic">{{ child.text }}</span>
+                            }
+                        </p>
+                    }
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-gray-100 text-center">
+                    <a routerLink="/" class="text-[#7296A4] font-semibold hover:text-[#9EBECB] transition-colors">
+                        ← Volver al inicio
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+} @else {
+    <div class="min-h-[70vh] flex flex-col items-center justify-center text-[#7296A4]">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#7296A4] mb-4"></div>
+        <p class="font-semibold">Cargando proyecto...</p>
+    </div>
+}

@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "programadors",
+  "info": {
+    "singularName": "programador",
+    "pluralName": "programadors",
+    "displayName": "Programador"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "specialty": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "profilePicture": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "githubUrl": {
+      "type": "string"
+    },
+    "linkedinUrl": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "fullDescription": {
+      "type": "blocks"
+    }
+  }
+}

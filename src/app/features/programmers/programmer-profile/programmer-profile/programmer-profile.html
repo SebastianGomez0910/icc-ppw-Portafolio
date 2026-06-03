@@ -1,4 +1,4 @@
-@if (perfilEncontrado) {
+@if (programador(); as p) {
     <section class="min-h-screen bg-[#EFEFEF] pt-24 pb-20 px-6 font-sans">
         
         <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
@@ -6,28 +6,42 @@
             <div class="relative mb-10">
                 <div class="absolute inset-0 bg-[#9EBECB] rounded-full blur-md opacity-30"></div>
                 <img 
-                    [src]="perfilEncontrado.fotoPerfil" 
-                    alt="Foto de {{ perfilEncontrado.nombreCompleto }}" 
-                    class="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg">
+                    [src]="p.profilePicture ? 'http://localhost:1337' + p.profilePicture.url : 'https://ui-avatars.com/api/?name=' + p.name"
+                    class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-full shadow-lg relative z-10 mx-auto"
+                >
             </div>
 
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-medium text-[#7296A4] leading-relaxed mb-10 px-4">
-                "{{ perfilEncontrado.descripcionCompleta }}"
+            <h1 class="text-xl md:text-2xl font-bold text-[#7296A4]">
+                {{ p.name }}
+            </h1>
+
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-medium text-[#7296A4] leading-relaxed px-4 ">
+                <div class="text-xl md:text-2xl text-[#7296A4] leading-relaxed px-4 max-w-3xl text-center">
+                    @for (block of p.fullDescription; track $index) {
+                        <p class="mb-4">
+                            @for (child of block.children; track $index) {
+                                <span [class.font-bold]="child.bold">{{ child.text }}</span>
+                            }
+                        </p>
+                    }
+                </div>
             </h2>
 
-            <h1 class="text-xl md:text-2xl font-bold text-[#7296A4]">
-                {{ perfilEncontrado.nombreCompleto }}
-            </h1>
+            <div class="flex gap-6 mt-8 border-t border-[#CDDEE5] pt-8 w-full max-w-md justify-center">
+                <h3 class="text-2xl text-[#3f697a]">Especialidades</h3>
+                
+            </div>
+
             <p class="text-sm md:text-base text-[#9EBECB] font-semibold mt-1 tracking-wide uppercase">
-                {{ perfilEncontrado.especialidad }}
+                    {{ p.specialty }}
             </p>
 
             <div class="flex gap-6 mt-8 border-t border-[#CDDEE5] pt-8 w-full max-w-md justify-center">
-                <a [href]="perfilEncontrado.enlaceGithub" target="_blank" class="text-[#7296A4] hover:text-[#9EBECB] transition-colors">
+                <a [href]="p.githubUrl" target="_blank" class="text-[#7296A4] hover:text-[#9EBECB] transition-colors">
                     <span class="font-medium">GitHub</span>
                 </a>
                 <span class="text-[#CDDEE5]">|</span>
-                <a [href]="perfilEncontrado.enlaceLinkedin" target="_blank" class="text-[#7296A4] hover:text-[#9EBECB] transition-colors">
+                <a [href]="p.linkedinUrl" target="_blank" class="text-[#7296A4] hover:text-[#9EBECB] transition-colors">
                     <span class="font-medium">LinkedIn</span>
                 </a>
             </div>
@@ -36,35 +50,24 @@
 
         <div class="max-w-6xl mx-auto mt-32">
             <h3 class="text-2xl font-bold text-[#7296A4] text-center mb-12">Proyectos Destacados</h3>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="bg-white rounded-xl border border-[#CDDEE5] p-6 hover:shadow-lg transition-shadow">
-                    <div class="h-40 bg-[#E6F0F2] rounded-lg mb-4 flex items-center justify-center text-[#9EBECB]">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h4 class="text-lg font-bold text-[#7296A4] mb-2">SmartTraffic 360</h4>
-                    <p class="text-sm text-gray-500 mb-4 line-clamp-3">Solución IoT integrada para monitoreo de tráfico inteligente utilizando microcontroladores ESP32 y transmisión de datos de sensores en tiempo real.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-[#E6F0F2] text-[#7296A4] px-2 py-1 rounded">IoT</span>
-                        <span class="text-xs bg-[#E6F0F2] text-[#7296A4] px-2 py-1 rounded">C++</span>
-                        <span class="text-xs bg-[#E6F0F2] text-[#7296A4] px-2 py-1 rounded">Angular</span>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-[#CDDEE5] p-6 hover:shadow-lg transition-shadow">
-                    <div class="h-40 bg-[#E6F0F2] rounded-lg mb-4 flex items-center justify-center text-[#9EBECB]">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                    </div>
-                    <h4 class="text-lg font-bold text-[#7296A4] mb-2">Plataforma E-Commerce</h4>
-                    <p class="text-sm text-gray-500 mb-4 line-clamp-3">Desarrollo Full-Stack de una tienda en línea escalable con carrito de compras, pasarela de pagos y panel administrativo.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-[#E6F0F2] text-[#7296A4] px-2 py-1 rounded">Spring Boot</span>
-                        <span class="text-xs bg-[#E6F0F2] text-[#7296A4] px-2 py-1 rounded">PostgreSQL</span>
-                    </div>
-                </div>
-
+                @for(proyecto of proyectos(); track proyecto.id){
+                    <app-card-project [proyecto]="proyecto"></app-card-project>
+                }
+                @empty{
+                    <p class="col-span-full text-center text-gray-500">Aún no hay proyectos publicados.</p>
+                }
             </div>
+        </div>
+
+        <div class="flex justify-center">
+        <button
+            [routerLink]="['/']"
+            class="bg-[#7296A4] text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-[#9EBECB] hover:shadow-md transition-all duration-300 items-center"
+        >
+            Volver al inicio
+        </button>
         </div>
 
     </section>

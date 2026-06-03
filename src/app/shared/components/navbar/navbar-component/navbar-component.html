@@ -22,20 +22,28 @@
             </div>
 
             <div class="hidden md:flex relative items-center">
-                <button 
-                    (click)="toggleMenu()"
-                    class="bg-[#7296A4] text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-[#9EBECB] transition-colors shadow-sm flex items-center gap-1 focus:outline-none">
-                    Ingresar
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
+                <div class="flex items-center gap-4">
+                    @if(user$ | async; as user){
+                        <span class="text-sm font-semibold text-[#7296A4] hidden md:block">
+                            {{ user.email }}
+                        </span>
 
-                <div 
-                    [class.hidden]="!isMenuOpen"
-                    class="absolute top-12 right-0 bg-white shadow-lg rounded-md w-40 py-2 border border-gray-100">
-                    <a [routerLink]="['/login']" (click)="closeMenus()" class="block px-4 py-2 text-sm text-[#7296A4] hover:bg-[#E6F0F2] transition-colors">Iniciar Sesión</a>
-                    <a [routerLink]="['/registro']" (click)="closeMenus()" class="block px-4 py-2 text-sm text-[#7296A4] hover:bg-[#E6F0F2] transition-colors">Registrarse</a>
+                        <button
+                            (click)="logout()" 
+                            class="text-red-500 border border-red-200 bg-red-50 px-4 py-2 rounded-lg font-bold hover:bg-red-100 transition-colors">
+                            Cerrar sesión
+                        </button>
+                    }
+                    @else{
+                        <a routerLink="/login"
+                            class="text-[#7296A4] font-bold hover:text-[#9EBECB] transition-colors">
+                            Ingresar
+                        </a>
+                        <a routerLink="/registro"
+                            class="ng-[#7296A4] text-white px-4 py-2 rounded-lg font-bold bg-[#9EBECB] hover:bg-[#7296A4] hover:shadow-md transition-all">
+                            Registrarse
+                        </a>
+                    }
                 </div>
             </div>
 
