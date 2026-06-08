@@ -8,18 +8,20 @@ import { Programador } from '../../../interfaces/programmer.interface';
 import { ProjectService } from '../../../core/services/project.service';
 import { Proyecto } from '../../../interfaces/project.interface';
 import { CardProject } from "../../../shared/components/card-project/card-project/card-project";
+import { ServiciosList } from "../../servicios/servicios-list/servicios-list";
+import { ContactoComponent } from "../../../shared/components/card-contacto/contacto-component/card-contacto";
 
 @Component({
   selector: 'app-home-component',
-  imports: [HeroComponent, CardProgrammerComponent, CardProject],
+  imports: [HeroComponent, CardProgrammerComponent, CardProject, ServiciosList, ContactoComponent],
   templateUrl: './home-component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
 
   private programmerService = inject(ProgrammerService);
-  private projectService=inject(ProjectService)
-
+  private projectService=inject(ProjectService);
+  
   programadores = toSignal(
     this.programmerService.getProgrammers().pipe(
       map(response => response.data) 

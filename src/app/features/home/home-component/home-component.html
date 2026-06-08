@@ -1,30 +1,41 @@
 <app-hero-component></app-hero-component>
 
-<section class="py-20 px-6 max-w-7xl mx-auto" id="card-progranador">
-    <h2 class="text-3xl font-bold text-center text-[#7296A4] mb-12">Conoce a nuestro equipo</h2>
+
+<section class="py-20 px-6 max-w-7xl mx-auto min-h-screen flex flex-col justify-center mb-32" id="card-progranador">
     
-    <div class="grid grid-cols-1 gap-10 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center text-[#7296A4] mb-12 w-full">Conoce a nuestro equipo</h2>
+    
+    <div class="grid grid-cols-1 gap-10 w-full max-w-5xl mx-auto">
         @for (programador of programadores(); track programador.id) {
             
             <app-card-programmer-component [programador]="programador"></app-card-programmer-component>
 
         } @empty {
-            <p class="text-center text-gray-500">No hay programadores disponibles en este momento.</p>
+            <p class="text-center text-gray-500 w-full">No hay programadores disponibles en este momento.</p>
         }
     </div>
 </section>
 
-<section class="py-20 px-6 max-w-7xl mx-auto bg-[#F5F8F9] rounded-3xl my-10" id="proyectos">
-    <h2 class="text-3xl font-bold text-center text-[#7296A4] mb-12">Proyectos Destacados</h2>
+<section>
+    <app-contacto-component></app-contacto-component>
+</section>
+
+<section class="py-20 px-6 max-w-7xl w-full mx-auto bg-[#F5F8F9] rounded-3xl my-10 min-h-screen flex flex-col justify-center" id="proyectos">
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <h2 class="text-3xl font-bold text-center text-[#7296A4] mb-12 w-full">Proyectos Destacados</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
         
         @for (proyecto of proyectosDestacados(); track proyecto.id) {
             
             <app-card-project [proyecto]="proyecto"></app-card-project>
 
         } @empty {
-            <p class="col-span-full text-center text-gray-500">Aún no hay proyectos destacados.</p>
+            <p class="col-span-full text-center text-gray-500 w-full">Aún no hay proyectos destacados.</p>
         }
     </div>
 </section>
+
+<section class="py-20 px-6 max-w-7xl w-full mx-auto min-h-screen flex flex-col justify-center" id="servicios">
+    <app-servicios-list></app-servicios-list>
+</section>>

@@ -48,6 +48,13 @@
                 Ver perfil
             </a>
             
+            @if (authService.isLoggedIn()) {
+            <a href="#contacto" class="btn btn-outline border-[#7296A4] text-[#7296A4] w-full mt-4">
+                Contactar
+            </a>
+            } @else {
+            <p class="text-xs text-center text-gray-400 mt-4">Inicia sesión para contactar</p>
+            }
         </div>
     </div>
 </div>

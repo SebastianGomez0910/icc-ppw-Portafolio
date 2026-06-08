@@ -1,0 +1,11 @@
+<section class="max-w-6xl mx-auto py-20 px-4">
+  <div class="text-center mb-16">
+    <h2 class="text-3xl font-bold text-[#7296A4]">Servicios de especialización</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    @for (item of servicios(); track item.id) {
+      <app-card-servicio [servicio]="item"></app-card-servicio>
+    }
+  </div>
+</section>

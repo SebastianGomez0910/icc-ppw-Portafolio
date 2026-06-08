@@ -1,0 +1,62 @@
+<div class="min-h-screen bg-[#F5F8F9] py-12 px-6">
+  <div class="max-w-4xl mx-auto">
+    
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold text-[#7296A4]">Mis Solicitudes de Contacto</h2>
+      <p class="text-gray-500 text-sm mt-1">Aquí puedes revisar el estado de los proyectos que has propuesto.</p>
+    </div>
+
+    @if (cargando()) {
+      <div class="flex justify-center py-10">
+        <span class="loading loading-spinner text-[#7296A4] loading-lg"></span>
+      </div>
+    } @else {
+      
+      <div class="grid grid-cols-1 gap-6">
+        @for (solicitud of solicitudes(); track $index) {
+          
+          <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+            
+            <div class="bg-slate-50 px-6 py-4 border-b border-gray-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+              <div>
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Dirigido a:</span>
+                <h3 class="text-lg font-bold text-[#7296A4]">{{ solicitud.programadorNombre || 'Programador' }}</h3>
+              </div>
+              
+              <div class="flex items-center gap-3 sm:justify-end">
+                <span class="text-xs text-gray-400 font-medium">
+                  {{ solicitud.fechaCreacion || 'Fecha no registrada' }}
+                </span>
+                
+                @if (solicitud.estado === 'Pendiente') {
+                  <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-bold rounded-full">Pendiente</span>
+                } @else {
+                  <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">{{ solicitud.estado || 'Respondida' }}</span>
+                }
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h4 class="text-sm font-bold text-gray-700 mb-2">Tu idea de proyecto:</h4>
+              <p class="text-gray-600 text-sm bg-gray-50 p-4 rounded-lg border border-gray-100 whitespace-pre-wrap">{{ solicitud.ideaProyecto || 'Sin detalles' }}</p>
+              
+              @if (solicitud.estado !== 'Pendiente' && solicitud.respuestaProgramador) {
+                <div class="mt-4 border-l-4 border-[#7296A4] bg-[#7296A4]/5 pl-4 py-3 pr-4 rounded-r-lg">
+                  <h4 class="text-sm font-bold text-[#7296A4] mb-1">Respuesta del Programador:</h4>
+                  <p class="text-gray-700 text-sm whitespace-pre-wrap">{{ solicitud.respuestaProgramador }}</p>
+                </div>
+              }
+            </div>
+
+          </div>
+
+        } @empty {
+          <div class="bg-white p-12 rounded-xl shadow-sm border border-gray-100 text-center">
+            <p class="text-gray-500 font-medium mb-4">Aún no has enviado ninguna solicitud de contacto.</p>
+            <a routerLink="/" class="px-6 py-2 bg-[#7296A4] text-white rounded-md hover:bg-[#5b7a87] font-medium">Explorar Programadores</a>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

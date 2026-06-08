@@ -17,8 +17,12 @@
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[#7296A4]">
                 <a [routerLink]="['/']" (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Home</a>
                 <a [routerLink]="['/']" fragment="card-progranador" (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Programadores</a>
-                <a [routerLink]="['/proyectos']" (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Proyectos</a>
-                <a [routerLink]="['/servicios']" (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Servicios</a>
+                <a [routerLink]="['/']" fragment="proyectos" (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Proyectos</a>
+                <a [routerLink]="['/']" fragment="servicios" (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Servicios</a>
+                <a [routerLink]="['/']" fragment="contacto" (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Enviar Solicitud</a>
+                <a [routerLink]="['/mis-solicitudes']"  (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Mis solicitudes</a>
+                <a [routerLink]="['/solicitudes-recibidas']"  (click)="closeMenus()" class="hover:text-[#9EBECB] transition-colors">Solicitudes</a>
+
             </div>
 
             <div class="hidden md:flex relative items-center">
@@ -57,9 +61,12 @@
         <div class="px-4 pt-2 pb-4 space-y-1">
             <a [routerLink]="['/']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Home</a>
             <a [routerLink]="['/']" fragment="card-progranador" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Programadores</a>
-            <a [routerLink]="['/proyectos']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Proyectos</a>
-            <a [routerLink]="['/servicios']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Servicios</a>
-            
+            <a [routerLink]="['/']" fragment="proyectos" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Proyectos</a>
+            <a [routerLink]="['/']" fragment="servicios" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Servicios</a>
+            <a [routerLink]="['/']" fragment="contacto" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Enviar Solicitud</a>
+            <a [routerLink]="['/mis-solicitudes']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Mis Solicitudes</a>
+            <a [routerLink]="['/solicitudes-recibidas']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] hover:bg-[#E6F0F2]">Solicitudes</a>
+
             <div class="border-t border-[#CDDEE5] mt-4 pt-4">
                 <a [routerLink]="['/login']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-white bg-[#7296A4] hover:bg-[#9EBECB] mb-2 text-center">Iniciar Sesión</a>
                 <a [routerLink]="['/registro']" (click)="closeMenus()" class="block px-3 py-3 rounded-md text-base font-medium text-[#7296A4] border border-[#7296A4] hover:bg-[#E6F0F2] text-center">Registrarse</a>
