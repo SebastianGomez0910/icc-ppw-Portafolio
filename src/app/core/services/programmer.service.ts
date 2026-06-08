@@ -7,15 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class ProgrammerService {
 
-  private http=inject(HttpClient);
-  private apiUrl='http://localhost:1337/api/programadors?populate=*';
+  private http = inject(HttpClient);
+  private apiUrl = 'https://lovely-victory-cc86f4c6ba.strapiapp.com/api/programadors';
 
-  getProgrammers():Observable<any>{
-    return this.http.get(this.apiUrl);
+  getProgrammers(): Observable<any> {
+    return this.http.get(`${this.apiUrl}?populate=*`);
   }
 
-  getProgrammerBySlug(slug: string): Observable<any>{
-    const url=`http://localhost:1337/api/programadors?filters[slug][$eq]=${slug}&populate=*`;
+  getProgrammerBySlug(slug: string): Observable<any> {
+    const url = `${this.apiUrl}?filters[slug][$eq]=${slug}&populate=*`;
     return this.http.get(url);
   }
 }

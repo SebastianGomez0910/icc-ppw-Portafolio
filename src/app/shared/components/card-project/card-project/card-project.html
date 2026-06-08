@@ -6,11 +6,11 @@
             {{ proyecto().projectType }}
         </div>
 
-        <img 
-            [src]="proyecto().mainImage ? 'http://localhost:1337' + proyecto().mainImage.url : 'https://placehold.co/600x400/9EBECB/ffffff?text=Proyecto'" 
-            [alt]="'Imagen de ' + proyecto().name"
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-        >
+            <img 
+                [src]="proyecto().mainImage ? proyecto().mainImage.url : 'https://placehold.co/600x400/9EBECB/ffffff?text=Proyecto'" 
+                [alt]="'Imagen de ' + proyecto().name"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            >
     </div>
 
     <div class="p-6 flex flex-col flex-grow">

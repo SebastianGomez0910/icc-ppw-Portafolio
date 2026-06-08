@@ -5,10 +5,10 @@
             
             <div class="relative mb-10">
                 <div class="absolute inset-0 bg-[#9EBECB] rounded-full blur-md opacity-30"></div>
-                <img 
-                    [src]="p.profilePicture ? 'http://localhost:1337' + p.profilePicture.url : 'https://ui-avatars.com/api/?name=' + p.name"
-                    class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-full shadow-lg relative z-10 mx-auto"
-                >
+                    <img 
+                        [src]="p.profilePicture ? p.profilePicture.url : 'https://ui-avatars.com/api/?name=' + p.name"
+                        class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-full shadow-lg relative z-10 mx-auto"
+                    >
             </div>
 
             <h1 class="text-xl md:text-2xl font-bold text-[#7296A4]">

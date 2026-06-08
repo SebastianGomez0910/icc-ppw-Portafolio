@@ -7,14 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class ProjectService {
 
-  private http=inject(HttpClient);
+  private http = inject(HttpClient);
 
-  private apiUrl='http://localhost:1337/api/proyectos';
-  getProjects(): Observable<any>{
+  private apiUrl = 'https://lovely-victory-cc86f4c6ba.strapiapp.com/api/proyectos';
+
+  getProjects(): Observable<any> {
     return this.http.get(`${this.apiUrl}?populate=*`);
   }
 
-  getProjectBySlug(slug: string): Observable<any>{
+  getProjectBySlug(slug: string): Observable<any> {
     return this.http.get(`${this.apiUrl}?filters[slug][$eq]=${slug}&populate=*`);
   }
 }

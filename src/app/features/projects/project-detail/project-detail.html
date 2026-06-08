@@ -5,7 +5,7 @@
             
             <div class="w-full h-64 md:h-96 relative bg-gray-200">
                 <img 
-                    [src]="p.mainImage ? 'http://localhost:1337' + p.mainImage.url : 'https://placehold.co/1200x600/9EBECB/ffffff?text=Proyecto'" 
+                    [src]="p.mainImage ? p.mainImage.url : 'https://placehold.co/1200x600/9EBECB/ffffff?text=Proyecto'" 
                     [alt]="p.name"
                     class="w-full h-full object-cover"
                 >

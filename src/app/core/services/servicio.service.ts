@@ -7,11 +7,11 @@ import { StrapiServicioResponse } from '../../interfaces/servicio.interface';
 })
 export class ServicioService {
 
-  private http=inject(HttpClient);
+  private http = inject(HttpClient);
 
-  private apiUrl='http://localhost:1337/api/servicios';
+  private apiUrl = 'https://lovely-victory-cc86f4c6ba.strapiapp.com/api/servicios';
 
-  getServicios(){
-    return this.http.get<StrapiServicioResponse>(this.apiUrl);
+  getServicios() {
+    return this.http.get<StrapiServicioResponse>(`${this.apiUrl}?populate=*`);
   }
 }
