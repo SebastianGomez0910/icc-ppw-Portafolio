@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../../core/services/auth.service';
 import { RequestService } from '../../../../core/services/request.service';
 import { SolicitudContacto } from '../../../../interfaces/request.interface';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-solicitudes-recibidas',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './solicitudes-recibidas.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

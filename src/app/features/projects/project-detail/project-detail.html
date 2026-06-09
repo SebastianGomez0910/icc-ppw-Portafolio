@@ -1,43 +1,43 @@
 @if (proyecto(); as p) {
-    <section class="min-h-screen bg-[#EFEFEF] pt-24 pb-20 px-6 font-sans">
+    <main class="min-h-screen bg-slate-50 pt-24 pb-20 px-4 sm:px-6 font-sans">
         
-        <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-[#CDDEE5]">
+        <article class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
             
-            <div class="w-full h-64 md:h-96 relative bg-gray-200">
+            <div class="w-full h-64 md:h-96 relative bg-slate-200">
                 <img 
-                    [src]="p.mainImage ? p.mainImage.url : 'https://placehold.co/1200x600/9EBECB/ffffff?text=Proyecto'" 
-                    [alt]="p.name"
+                    [src]="p.mainImage ? p.mainImage.url : 'https://placehold.co/1200x600/e2e8f0/475569?text=Proyecto'" 
+                    [alt]="'Imagen representativa de ' + p.name"
                     class="w-full h-full object-cover"
                 >
-                <div class="absolute top-4 right-4 bg-[#7296A4] text-white px-4 py-2 rounded-full font-bold shadow-md">
+                <div class="absolute top-4 right-4 bg-orange-700 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md tracking-wider uppercase">
                     {{ p.projectType }}
                 </div>
             </div>
 
             <div class="p-8 md:p-12">
                 
-                <h1 class="text-3xl md:text-5xl font-bold text-[#7296A4] mb-4">{{ p.name }}</h1>
-                <p class="text-lg text-gray-500 font-medium mb-8">{{ p.shortDescription }}</p>
+                <h1 class="text-3xl md:text-5xl font-extrabold text-slate-800 mb-4 tracking-tight">{{ p.name }}</h1>
+                <p class="text-lg text-slate-600 font-medium mb-8 leading-relaxed">{{ p.shortDescription }}</p>
 
-                <div class="flex flex-wrap gap-4 mb-10 border-b border-gray-100 pb-8">
-                    <div class="bg-[#F5F8F9] px-4 py-2 rounded-md border border-[#CDDEE5]">
-                        <span class="text-xs text-[#9EBECB] font-bold uppercase block mb-1">Tecnologías</span>
-                        <span class="text-gray-700 font-medium">{{ p.technologies }}</span>
+                <div class="flex flex-wrap items-center gap-4 mb-10 border-b border-slate-100 pb-8">
+                    <div class="bg-orange-50 px-5 py-2.5 rounded-2xl border border-orange-100">
+                        <span class="text-xs text-orange-800 font-extrabold uppercase tracking-wider block mb-1">Tecnologías</span>
+                        <span class="text-slate-700 font-medium">{{ p.teechnologies }}</span>
                     </div>
 
-                    @if (p.repositoryUrl) {
-                        <a [href]="p.repositoryUrl" target="_blank" class="flex items-center gap-2 bg-gray-800 text-white px-6 py-2 rounded-md hover:bg-gray-700 transition-colors">
-                            <span class="font-semibold">Ver Código</span>
+                    @if (p.repositorioUrl) {
+                        <a [href]="p.repositorioUrl" target="_blank" class="flex items-center gap-2 bg-slate-800 text-white px-6 py-2.5 rounded-full hover:bg-slate-900 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                            <span class="font-bold tracking-wide">Ver Código</span>
                         </a>
                     }
                     @if (p.demoUrl) {
-                        <a [href]="p.demoUrl" target="_blank" class="flex items-center gap-2 bg-[#7296A4] text-white px-6 py-2 rounded-md hover:bg-[#9EBECB] transition-colors">
-                            <span class="font-semibold">Visitar Demo</span>
+                        <a [href]="p.demoUrl" target="_blank" class="flex items-center gap-2 bg-orange-700 text-white px-6 py-2.5 rounded-full hover:bg-orange-800 transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                            <span class="font-bold tracking-wide">Visitar Demo</span>
                         </a>
                     }
                 </div>
 
-                <div class="prose max-w-none text-gray-700 leading-relaxed">
+                <div class="prose max-w-none text-slate-700 leading-relaxed text-lg">
                     @for (block of p.fullDescription; track $index) {
                         <p class="mb-4">
                             @for (child of block.children; track $index) {
@@ -47,19 +47,20 @@
                     }
                 </div>
 
-                <div class="mt-12 pt-8 border-t border-gray-100 text-center">
-                    <a routerLink="/" class="text-[#7296A4] font-semibold hover:text-[#9EBECB] transition-colors">
-                        ← Volver al inicio
+                <div class="mt-12 pt-8 border-t border-slate-100 text-center">
+                    <a [routerLink]="['/']" fragment="proyectos" class="inline-flex items-center gap-2 text-orange-700 font-bold hover:text-orange-800 transition-colors group cursor-pointer">
+                        <span class="transform transition-transform group-hover:-translate-x-1">←</span>
+                        Volver al inicio
                     </a>
                 </div>
 
             </div>
-        </div>
-    </section>
+        </article>
+    </main>
 
 } @else {
-    <div class="min-h-[70vh] flex flex-col items-center justify-center text-[#7296A4]">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#7296A4] mb-4"></div>
-        <p class="font-semibold">Cargando proyecto...</p>
+    <div class="min-h-[70vh] flex flex-col items-center justify-center text-orange-700" aria-live="polite">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-700 mb-4"></div>
+        <p class="font-bold tracking-wide">Cargando proyecto...</p>
     </div>
 }
