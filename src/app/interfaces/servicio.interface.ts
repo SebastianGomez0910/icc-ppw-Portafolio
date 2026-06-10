@@ -1,3 +1,4 @@
+//molde individual presenta 1 solo registro 
 export interface Servicio{
     id: number;
     documentId: string;
@@ -8,6 +9,7 @@ export interface Servicio{
 }
 
 export interface StrapiServicioResponse{
+    //decimos que es un array
     data: Servicio[];
     meta: any;
 }
