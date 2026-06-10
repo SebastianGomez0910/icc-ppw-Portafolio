@@ -1,120 +1,41 @@
 # Proyecto Integrador - Portafolio Personal
 
-Aplicación web tipo portafolio profesional multiusuario desarrollada con Angular, Firebase y Strapi.
+# Universidad Politécnica Salesiana
 
-## Objetivo
+### Carrera: Computación
+### Asiganatura: Programación y Plataformas Web
+### Docente: Pablo Torres
+### Estudiante: Sebastián Gómez
 
-Desarrollar una aplicación web que permita:
+# Descripción General del Proyecto
 
-- Mostrar perfiles de programadores.
-- Mostrar proyectos destacados.
-- Administrar contenido dinámico mediante Strapi CMS.
-- Permitir autenticación de usuarios con Firebase.
-- Gestionar solicitudes de contacto hacia programadores.
+El presente proyecto consiste en el desarrollo de una aplicación web tipo portafolio profesional multiusuario. El sistema permite a los usuarios visualizar perfiles de programadores, explorar proyectos destacados y servicios ofrecidos. Además, la plataforma facilita la interacción mediante un sistema de solicitudes de contacto, donde usuarios externos autenticados pueden comunicarse directamente con los desarrolladores.
 
-# Tecnologías utilizadas
+# Arquitectura del Sistema
+El proyecto fue construido bajo una arquitectura de separación de responsabilidades, utilizando las siguientes tecnologías:
+- Angular: Actúa como la interfaz principal del usuario, encargada de consumir las APIs, manejar la navegación y gestionar la interacción.
+- Strapi: Implementado para administrar todo el contenido dinámico de la plataforma, como la información de los programadores, proyectos y servicios.
+- Firebase: Se utilizó Firebase Authentication para la gestión de usuarios (registro e inicio de sesión) y Cloud Firestore para almacenar y actualizar el estado de las solicitudes de contacto.  
 
-- Angular
-- TailwindCSS
-- TypeScript
+# Decisiones de Diseño y Estructura del Código
 
-- Firebase Authentication
-- Cloud Firestore
-- Strapi CMS
+Core `(src/app/core)` contiene los servicios globales encargados de la comunicación HTTP con Strapi y la conexión con Firebase Authentication y Firestore. Aquí se aseguró el tipado estricto de las respuestas de las APIs mediante el uso de interfaces de TypeScript para prevenir errores en tiempo de ejecución.
 
-# Estructura del proyecto
-```txt
-src/app
-│   app.config.ts
-│   app.css
-│   app.html
-│   app.routes.ts
-│   app.spec.ts
-│   app.ts
-│   
-├───core
-│   ├───guards
-│   │       auth.guard.ts
-│   │       programmer.guard.ts
-│   │       
-│   ├───interceptors
-│   └───services
-│           auth.service.ts
-│           programmer.service.ts
-│           project.service.ts
-│           request.service.ts
-│           
-├───environments
-├───features
-│   ├───auth
-│   │   ├───login
-│   │   └───register
-│   ├───dashboard
-│   ├───home
-│   ├───programmers
-│   │   ├───programmer-list
-│   │   └───programmer-profile
-│   ├───projects
-│   └───requests
-│       ├───create-request
-│       └───my-requests
-├───interfaces
-│       programmer.interface.ts
-│       project.interface.ts
-│       request.interface.ts
-│       service.interface.ts
-│       
-├───layouts
-│   ├───auth-layout
-│   ├───dashboard-layout
-│   └───main-layout
-├───mocks
-│       mock-programmers.ts
-│       mock-projects.ts
-│       mock-services.ts
-│       
-└───shared
-    ├───components
-    │   ├───card-programmer
-    │   ├───card-project
-    │   ├───footer
-    │   ├───hero-section
-    │   └───navbar
-    ├───pipes
-    └───ui
-```
+Features `(src/app/features)` agrupa la lógica de negocio en módulos independientes:
+- Auth: Maneja el inicio de sesión (login) y registro (register). Incluye guards para proteger las rutas privadas.
+- Home & Programmers: Muestran el contenido dinámico (hero, listados y perfiles individuales). Para la navegación detallada se utilizó un enrutamiento dinámico, garantizando la sintaxis correcta en los parámetros de las rutas (ej. /:slug) para evitar discrepancias de navegación.
+- Requests: Contiene las vistas tanto para los programadores (solicitudes-recibidas) como para los usuarios externos (mis-solicitudes), permitiendo la gestión del estado de cada petición.
 
---- 
- 
-# Funcionalidades principales
+Shared `(src/app/shared/components)` almacena componentes modulares de la interfaz gráfica, como card-programmer, card-project y la barra de navegación, logrando una interfaz clara y organizada.
 
-## Públicas
-- Home del portafolio
-- Visualización de programadores
-- Visualización de proyectos
-- Visualización de servicios
+# Desafíos Enfretados
+- Sincronización de Rutas y Parámetros: Conflictos de sintaxis en los archivos de configuración del router, corrigiendo la definición de parámetros para garantizar que las vistas de detalle cargaran la información correcta desde el CMS.
 
-## Usuarios autenticados
-- Registro
-- Inicio de sesión
-- Crear solicitudes
-- Ver solicitudes realizadas
+- Integración de Múltiples Plataformas: Coordinar la autenticación de Firebase con la obtención de datos desde Strapi requirió un manejo cuidadoso de la asincronía y la inyección de dependencias en los servicios principales de Angular.
 
-## Programadores
-- Ver solicitudes recibidas
-- Responder solicitudes
-- Cambiar estado de solicitudes
+- Gestión de Estados en las Solicitudes: Implementar la lógica para que los programadores pudieran visualizar y actualizar el estado (de "Pendiente" a "Respondida")  actualizando Firestore en tiempo real sin romper la experiencia de usuario.
 
----
+# Guia de Usuario
+### Administrador de Contenido.
 
-# Autor(es)
-
-- Sebastian Gomez
-
----
-
-# Materia
-
-Programación y Plataformas Web
-
-Universidad Politécnica Salesiana
+Debe acceder al panel de Strapi CMS para crear, editar o eliminar los perfiles de programadores, proyectos y servicios.

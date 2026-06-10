@@ -26,19 +26,21 @@ export const routes: Routes = [
     {
         path:'login',
         component: LoginComponent,
-        //canActivate: [guestGuardGuard]
+        canActivate: [guestGuardGuard]
     },
     {
         path:'registro',
         component: RegisterComponent,
-        //canActivate: [guestGuardGuard]
+        canActivate: [guestGuardGuard]
     },
     {
         path:'mis-solicitudes',
-        component: MisSolicitudes
+        component: MisSolicitudes,
+        canActivate: [guardsGuard]
     },
     {
         path:'solicitudes-recibidas',
-        component:SolicitudesRecibidas
+        component:SolicitudesRecibidas,
+        canActivate: [guardsGuard]
     }
 ];

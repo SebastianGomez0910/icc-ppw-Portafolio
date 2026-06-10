@@ -76,19 +76,23 @@
                     Servicios
                 </a>
                 
-                <a [routerLink]="['/mis-solicitudes']" 
-                   routerLinkActive="border-orange-700 text-orange-800 bg-orange-50" 
-                   (click)="closeMenus()" 
-                   class="px-2 xl:px-3 py-1.5 rounded-full border border-transparent hover:text-orange-700 transition-all whitespace-nowrap">
-                    Mis solicitudes
-                </a>
+                @if(isLoggedIn() && !isProgrammer()){
+                    <a [routerLink]="['/mis-solicitudes']" 
+                    routerLinkActive="border-orange-700 text-orange-800 bg-orange-50" 
+                    (click)="closeMenus()" 
+                    class="px-2 xl:px-3 py-1.5 rounded-full border border-transparent hover:text-orange-700 transition-all whitespace-nowrap">
+                        Mis solicitudes
+                    </a>
+                }
 
-                <a [routerLink]="['/solicitudes-recibidas']" 
-                   routerLinkActive="border-orange-700 text-orange-800 bg-orange-50" 
-                   (click)="closeMenus()" 
-                   class="px-2 xl:px-3 py-1.5 rounded-full border border-transparent hover:text-orange-700 transition-all whitespace-nowrap">
-                    Solicitudes
-                </a>
+                @if(isLoggedIn() && isProgrammer()){
+                    <a [routerLink]="['/solicitudes-recibidas']" 
+                    routerLinkActive="border-orange-700 text-orange-800 bg-orange-50" 
+                    (click)="closeMenus()" 
+                    class="px-2 xl:px-3 py-1.5 rounded-full border border-transparent hover:text-orange-700 transition-all whitespace-nowrap">
+                        Solicitudes
+                    </a>
+                }
             </div>
 
             <div class="hidden lg:flex items-center gap-2 xl:gap-4">
@@ -125,8 +129,13 @@
             <a [routerLink]="['/']" fragment="contacto" (click)="closeMenus()" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-orange-50 hover:text-orange-800 transition-colors">Enviar Solicitud</a>
             <a [routerLink]="['/']" fragment="proyectos" (click)="closeMenus()" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-orange-50 hover:text-orange-800 transition-colors">Proyectos</a>
             <a [routerLink]="['/']" fragment="servicios" (click)="closeMenus()" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-orange-50 hover:text-orange-800 transition-colors">Servicios</a>
-            <a [routerLink]="['/mis-solicitudes']" (click)="closeMenus()" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-orange-50 hover:text-orange-800 transition-colors">Mis Solicitudes</a>
-            <a [routerLink]="['/solicitudes-recibidas']" (click)="closeMenus()" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-orange-50 hover:text-orange-800 transition-colors">Solicitudes</a>
+            
+            @if(isLoggedIn() && !isProgrammer()){
+                <a [routerLink]="['/mis-solicitudes']" (click)="closeMenus()" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-orange-50 hover:text-orange-800 transition-colors">Mis Solicitudes</a>
+            }
+            @if(isLoggedIn() && isProgrammer()){
+                <a [routerLink]="['/solicitudes-recibidas']" (click)="closeMenus()" class="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-orange-50 hover:text-orange-800 transition-colors">Solicitudes</a>
+            }
 
             <div class="border-t border-slate-100 mt-4 pt-4 px-2">
                 @if(user$ | async; as user) {

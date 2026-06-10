@@ -17,6 +17,10 @@ export class ContactoComponent implements OnInit {
   private solicitudesService = inject(RequestService);
   private programmerService = inject(ProgrammerService);
 
+  private AuthService=inject(AuthService);
+
+  isLoggedIn=this.authService.isLoggedIn;
+
   programadores = signal<any[]>([]); 
   cargando = signal(true);
 

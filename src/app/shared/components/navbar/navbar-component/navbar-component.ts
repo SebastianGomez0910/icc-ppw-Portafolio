@@ -3,6 +3,7 @@ import { Auth, authState, signOut } from '@angular/fire/auth';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterModule } from "@angular/router";
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-navbar-component',
@@ -12,6 +13,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class NavbarComponent {
 
+  private authService=inject(AuthService);
 
   isMenuOpen: boolean=false;
   isMobileMenuOpen: boolean=false;
@@ -19,6 +21,9 @@ export class NavbarComponent {
   private auth=inject(Auth);
   private router=inject(Router);
   private route =inject(ActivatedRoute);
+
+  isLoggedIn=this.authService.isLoggedIn;
+  isProgrammer=this.authService.isProgrammer;
 
   fragmentoActivo=toSignal(this.route.fragment, {initialValue:''});
 
