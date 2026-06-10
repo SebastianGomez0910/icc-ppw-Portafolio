@@ -39,3 +39,28 @@ Shared `(src/app/shared/components)` almacena componentes modulares de la interf
 ### Administrador de Contenido.
 
 Debe acceder al panel de Strapi CMS para crear, editar o eliminar los perfiles de programadores, proyectos y servicios.
+<img width="1919" height="881" alt="image" src="https://github.com/user-attachments/assets/33ff4e19-22af-4c82-930d-b4151d0cabde" />
+<img width="1919" height="882" alt="image" src="https://github.com/user-attachments/assets/bcacdd19-e254-4674-8f02-cd14306b6073" />
+### Usuario Externo.
+Puede navegar libremente por el inicio y ver los proyectos.
+<img width="1919" height="983" alt="image" src="https://github.com/user-attachments/assets/c8c68573-7b98-461e-8bd4-dad0f7ac62a3" />
+Para enviar una solicitud de contacto a un desarrollador, es obligatorio registrarse e iniciar sesión con su correo electrónico.
+<img width="1919" height="916" alt="image" src="https://github.com/user-attachments/assets/ff36870f-26f7-4c24-8c81-c5e54444b34d" />
+<img width="1919" height="975" alt="image" src="https://github.com/user-attachments/assets/61d36a4c-074a-45ee-876f-70d931471a62" />
+Podrá revisar sus solicitudes enviadas en la pestaña correspondiente.
+<img width="1918" height="951" alt="image" src="https://github.com/user-attachments/assets/f09738d6-7376-4f33-a00e-b24fe5df1806" />
+Se registra la solicitud en Firestore
+<img width="1919" height="872" alt="image" src="https://github.com/user-attachments/assets/2ab6a34f-ac88-4a7c-a474-807911ecae30" />
+
+
+### Programador
+Debe iniciar sesión en la plataforma utilizando las credenciales provistas. Tendrá acceso a una vista exclusiva para revisar las solicitudes recibidas, cambiar su estado y registrar observaciones que se guardarán en Firestore.
+<img width="1919" height="967" alt="image" src="https://github.com/user-attachments/assets/59594475-19c3-4124-b7e8-23fb4bfea04e" />
+<img width="1919" height="775" alt="image" src="https://github.com/user-attachments/assets/9d759307-dcff-40d1-860b-24c2fc2f7982" />
+Se actualiza el estado en el Firestore
+<img width="1919" height="855" alt="image" src="https://github.com/user-attachments/assets/db7a6677-6e47-4b49-ba33-63c2f0d7ab3a" />
+Se observa el cambio en la interfaz del usuario
+<img width="1919" height="794" alt="image" src="https://github.com/user-attachments/assets/1a0b97ed-3c4f-4a56-877b-491fd736e75c" />
+
+
+
