@@ -39,28 +39,39 @@ Shared `(src/app/shared/components)` almacena componentes modulares de la interf
 ### Administrador de Contenido.
 
 Debe acceder al panel de Strapi CMS para crear, editar o eliminar los perfiles de programadores, proyectos y servicios.
+Vista del Content-Type Builder en Strapi, mostrando los atributos del tipo de colección Programador.
 <img width="1919" height="881" alt="image" src="https://github.com/user-attachments/assets/33ff4e19-22af-4c82-930d-b4151d0cabde" />
+Vista del Content Manager en Strapi, mostrando la gestión y estado de publicación de los Proyectos.
 <img width="1919" height="882" alt="image" src="https://github.com/user-attachments/assets/bcacdd19-e254-4674-8f02-cd14306b6073" />
 ### Usuario Externo.
-Puede navegar libremente por el inicio y ver los proyectos.
+El usuario externo puede explorar libremente la presentación general del portafolio, visualizando los perfiles, proyectos y servicios sin necesidad de iniciar sesión.
 <img width="1919" height="983" alt="image" src="https://github.com/user-attachments/assets/c8c68573-7b98-461e-8bd4-dad0f7ac62a3" />
-Para enviar una solicitud de contacto a un desarrollador, es obligatorio registrarse e iniciar sesión con su correo electrónico.
+El sistema permite la navegación por el Home, pero restringe el envío de solicitudes de contacto, indicando al usuario que debe iniciar sesión para habilitar esta funcionalidad.
 <img width="1919" height="916" alt="image" src="https://github.com/user-attachments/assets/ff36870f-26f7-4c24-8c81-c5e54444b34d" />
+Una vez que el usuario se registra e inicia sesión en la plataforma, el formulario de contacto se habilita. Este formulario captura de manera intuitiva la idea del proyecto y permite seleccionar a qué programador va dirigida la solicitud. Además, el usuario cuenta con una vista dedicada de "Mis Solicitudes" donde puede hacer seguimiento de todas sus peticiones enviadas y verificar su estado actual.
 <img width="1919" height="975" alt="image" src="https://github.com/user-attachments/assets/61d36a4c-074a-45ee-876f-70d931471a62" />
-Podrá revisar sus solicitudes enviadas en la pestaña correspondiente.
+Se observa el formulario de contacto habilitado y el panel de seguimiento de solicitudes, mostrando el historial de peticiones del usuario con sus respectivos estados de gestión.
 <img width="1918" height="951" alt="image" src="https://github.com/user-attachments/assets/f09738d6-7376-4f33-a00e-b24fe5df1806" />
-Se registra la solicitud en Firestore
+Se evidencia la correcta inserción del documento de la solicitud, asociando automáticamente los datos requeridos: el UID del solicitante , su correo electrónico , el nombre e ID del programador seleccionado y el estado inicial de la petición.
 <img width="1919" height="872" alt="image" src="https://github.com/user-attachments/assets/2ab6a34f-ac88-4a7c-a474-807911ecae30" />
 
 
 ### Programador
-Debe iniciar sesión en la plataforma utilizando las credenciales provistas. Tendrá acceso a una vista exclusiva para revisar las solicitudes recibidas, cambiar su estado y registrar observaciones que se guardarán en Firestore.
+Cada usuario con rol de programador deberá poder iniciar sesión y visualizar las solicitudes que le han sido dirigidas. Al ingresar, la plataforma habilita una vista exclusiva donde puede ver las solicitudes recibidas.
+En la parte superior, se observa una solicitud en estado "Pendiente" donde el programador puede redactar su observación técnica. 
 <img width="1919" height="967" alt="image" src="https://github.com/user-attachments/assets/59594475-19c3-4124-b7e8-23fb4bfea04e" />
+En esta otra parte, se muestra cómo la interfaz se actualiza inmediatamente tras enviar el formulario, cambiando el estado a "Respondida" y bloqueando el campo de texto para mostrar la respuesta registrada.
 <img width="1919" height="775" alt="image" src="https://github.com/user-attachments/assets/9d759307-dcff-40d1-860b-24c2fc2f7982" />
-Se actualiza el estado en el Firestore
+La captura evidencia cómo el documento en Cloud Firestore actualiza su campo estado a "Respondida" y añade el nuevo campo respuestaProgramador. 
 <img width="1919" height="855" alt="image" src="https://github.com/user-attachments/assets/db7a6677-6e47-4b49-ba33-63c2f0d7ab3a" />
-Se observa el cambio en la interfaz del usuario
+La captura demuestra el ciclo final el usuario externo, al revisar "Mis Solicitudes", ahora visualiza el nuevo estado en color verde junto con el mensaje redactado por el profesional.
 <img width="1919" height="794" alt="image" src="https://github.com/user-attachments/assets/1a0b97ed-3c4f-4a56-877b-491fd736e75c" />
 
+### Despliegue y Configuración 
+La aplicación cliente construida en Angular fue compilada para producción mediante el comando ng build y desplegada con éxito en la plataforma de Google. La aplicación se encuentra totalmente accesible de manera pública a través de la siguiente URL: https://mi-portafolio-personal-8be84.web.app/
 
+El gestor de contenidos y su respectiva base de datos PostgreSQL fueron desplegados en un entorno en la nube, exponiendo la API REST de forma segura para permitir las peticiones GET desde el dominio del frontend.
+
+### Conclusiones
+La implementación de Strapi junto con Angular demostró ser una solución eficiente y escalable para el desarrollo web moderno, ya que permite gestionar el contenido dinámico de forma independiente al frontend, además, la integración de Firebase Authentication y Cloud Firestore garantizó un sistema seguro y estructurado para la interacción en tiempo real, mientras que la organización modular del proyecto en directorios especializados favoreció la creación de interfaces responsivas, reutilizables y altamente usables.
 
